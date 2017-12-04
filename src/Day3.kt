@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
 
             val steps = if (value == 1) 0 else {
                 //Find the square size
-                var n = 1;
+                var n = 1
                 while (n*n < value) n += 2
 
                 //find order in the largest square

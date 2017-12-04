@@ -11,9 +11,9 @@ fun main(args: Array<String>) {
                     .map { it.toInt() }
             var largest = numbers.first()
             var smallest = numbers.first()
-            for (mumber in numbers) {
-                if (mumber < smallest) smallest = mumber
-                if (mumber > largest) largest = mumber
+            for (number in numbers) {
+                if (number < smallest) smallest = number
+                if (number > largest) largest = number
             }
             checksum += largest-smallest
         }

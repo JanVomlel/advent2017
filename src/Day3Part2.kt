@@ -1,24 +1,23 @@
 package day3part2
 import java.lang.Math.abs
 
-data class Indices(val i1: Int, val i2: Int) {
+data class Indices(private val i1: Int, private val i2: Int) {
 
-    fun next(): Indices {
+    fun next(): Indices =
         if (abs(i1) > abs(i2)) {
-            if (i1 > 0) return Indices(i1, i2+1)
-            else return Indices(i1, i2-1)
+            if (i1 > 0) Indices(i1, i2+1)
+            else Indices(i1, i2-1)
         } else if (abs(i1) < abs(i2)) {
-            if (i2 > 0) return Indices(i1-1, i2)
-            else return Indices(i1+1, i2)
+            if (i2 > 0) Indices(i1-1, i2)
+            else Indices(i1+1, i2)
         } else {
-            if (i1 > 0 && i2 > 0) return Indices(i1-1, i2)
-            else if (i1 > 0) return Indices(i1+1, i2)
-            else if (i2 > 0) return Indices(i1, i2-1)
-            else return Indices(i1+1, i2)
+            if (i1 > 0 && i2 > 0) Indices(i1-1, i2)
+            else if (i1 > 0) Indices(i1+1, i2)
+            else if (i2 > 0) Indices(i1, i2-1)
+            else Indices(i1+1, i2)
         }
-    }
 
-    fun neghbours() = listOf(
+    fun neighbours() = listOf(
             Indices(i1-1, i2),
             Indices(i1-1, i2-1),
             Indices(i1-1, i2+1),
@@ -36,10 +35,10 @@ fun sumTo(stopSum: Int): Int {
     sumMap[currentIndices] = currentValue
     while (currentValue <= stopSum) {
         currentIndices = currentIndices.next()
-        currentValue = currentIndices.neghbours().map { sumMap[it] ?: 0 }.sumBy { it }
+        currentValue = currentIndices.neighbours().map { sumMap[it] ?: 0 }.sumBy { it }
         sumMap[currentIndices] = currentValue
     }
-    return currentValue;
+    return currentValue
 }
 
 fun main(args: Array<String>) {

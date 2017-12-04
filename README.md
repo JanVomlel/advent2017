@@ -1,1 +1,1 @@
-Advent game http://adventofcode.com
+Advent game: [http://adventofcode.com]
